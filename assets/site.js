@@ -32,7 +32,7 @@
   function updateCta() {
     if (!cta || !ctaLink) return;
     var panel = d.getElementById(currentRole);
-    if (ctaState.positions && panel && panel.getAttribute('data-mailto')) {
+    if (enhanced && ctaState.positions && panel && panel.getAttribute('data-mailto')) {
       ctaLink.textContent = panel.getAttribute('data-role') + ' 지원하기';
       ctaLink.setAttribute('href', panel.getAttribute('data-mailto'));
     } else {
@@ -113,27 +113,29 @@
     });
   }
 
-  /* clipboard copy with a textarea fallback for in-app browsers */
+  /* clipboard copy: textarea copy inside the tap first (in-app browsers, iOS), then the Clipboard API */
   function copyText(value, ok, fail) {
-    var fallback = function () {
-      var ta = d.createElement('textarea');
-      ta.value = value;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.top = '0';
-      ta.style.opacity = '0';
-      d.body.appendChild(ta);
-      ta.select();
-      var done = false;
-      try { done = d.execCommand('copy'); } catch (err) { done = false; }
-      d.body.removeChild(ta);
-      if (done) ok(); else fail();
-    };
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(value).then(ok, fallback);
-    } else {
-      fallback();
-    }
+    var prev = d.activeElement;
+    var ta = d.createElement('textarea');
+    ta.value = value;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '0';
+    ta.style.opacity = '0';
+    ta.style.fontSize = '16px';
+    d.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, value.length);
+    var done = false;
+    try { done = d.execCommand('copy'); } catch (err) { done = false; }
+    d.body.removeChild(ta);
+    if (prev && prev !== d.body && prev.focus) prev.focus({ preventScroll: true });
+    if (done) return ok();
+    if (!navigator.clipboard || !window.isSecureContext) return fail();
+    var settled = false;
+    var once = function (cb) { return function () { if (!settled) { settled = true; cb(); } }; };
+    navigator.clipboard.writeText(value).then(once(ok), once(fail));
+    setTimeout(once(fail), 1500);
   }
 
   /* copy buttons: e-mail address or this page's link */
@@ -147,6 +149,7 @@
   });
 
   /* apply buttons copy the address instead of opening a mail app */
+  Array.prototype.forEach.call(d.querySelectorAll('[data-js-text]'), function (el) { el.textContent = el.getAttribute('data-js-text'); });
   d.addEventListener('click', function (e) {
     var a = e.target.closest ? e.target.closest('a[href^="mailto:"]') : null;
     if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;

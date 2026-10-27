@@ -53,3 +53,77 @@
 .editor-callout h4 span{color:var(--blue2)}
 .editor-callout p{margin-top:16px;font-size:15.5px;line-height:1.7;color:#C7D9F2;text-wrap:pretty}
 @media(max-width:639px){.editor-callout{padding:22px 20px}}
+/* 2026-10-28: language-region channels under the main magazines (no follower counts, company rule) */
+.lang-block{margin-top:clamp(28px,4vw,40px)}
+.lang-title{font-size:clamp(20px,2.6vw,26px);line-height:1.35;font-weight:800;letter-spacing:-.03em;text-wrap:balance}
+.lang-intro{margin-top:10px;max-width:700px;color:var(--muted);font-size:15.5px;line-height:1.7;text-wrap:pretty}
+.lang-grid{margin-top:20px}
+.lang-grid .mag-body .lang-tag{display:inline-flex;padding:4px 10px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;font-weight:700;color:var(--body)}
+@media(min-width:640px){.lang-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.lang-grid{grid-template-columns:repeat(3,1fr)}}
+/* "+α" tile after the five upcoming covers */
+.upcoming-more-tile{display:grid;place-content:center;justify-items:center;gap:8px;aspect-ratio:3/4;border:1px dashed rgba(74,149,255,.45);border-radius:12px;background:radial-gradient(circle at 50% 40%,var(--soft),var(--panel) 70%);text-align:center;padding:12px}
+.upcoming-more-tile strong{font-size:clamp(40px,6vw,64px);line-height:1;font-weight:800;letter-spacing:-.04em;color:var(--blue2)}
+.upcoming-more-tile span{font-size:clamp(12px,1.4vw,14px);line-height:1.5;color:var(--muted);text-wrap:balance}
+/* 2026-10-28: "Our work" case groups (thumbnail cards) */
+.work-group{margin-top:clamp(40px,6vw,64px)}
+.work-group:first-of-type{margin-top:clamp(32px,4.5vw,48px)}
+.work-group-head{display:flex;flex-direction:column;gap:8px}
+.work-cat{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2)}
+.work-title{font-size:clamp(22px,3vw,30px);line-height:1.3;font-weight:800;letter-spacing:-.035em;text-wrap:balance}
+.work-intro{max-width:760px;color:var(--muted);font-size:16px;line-height:1.7;text-wrap:pretty}
+.work-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:22px;list-style:none;padding:0}
+.work-card{overflow:hidden;display:flex;flex-direction:row;align-items:center;min-width:0}
+.work-visual{flex:0 0 104px;width:104px;aspect-ratio:4/5;margin:14px 0 14px 14px;border-radius:12px;overflow:hidden;background:var(--panel2)}
+.work-visual img{width:100%;height:100%;object-fit:cover}
+.work-body{padding:14px 16px;min-width:0}
+.work-name{font-size:17px;line-height:1.4;font-weight:800;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.work-desc{margin-top:4px;font-size:14px;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.work-link{display:inline-flex;align-items:center;min-height:40px;margin-top:2px;font-size:13.5px;font-weight:700;color:var(--blue2)}
+.work-note{margin-top:14px;font-size:12.5px;line-height:1.6;color:var(--dim)}
+@media(min-width:640px){
+  .work-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+}
+@media(min-width:640px) and (max-width:1023px){.work-card:last-child:nth-child(odd){grid-column:1/-1}}
+@media(min-width:1024px){
+  .work-grid{grid-template-columns:repeat(var(--cols,5),minmax(0,1fr));gap:16px}
+  .work-card{flex-direction:column;align-items:stretch}
+  .work-visual{flex:none;width:auto;margin:0;border-radius:0}
+  .work-body{padding:16px 16px 18px}
+  .work-name{font-size:16.5px}
+}
+@media(min-width:1024px){.upcoming-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}}
+.work-visual.work-logo{display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#1D2834,var(--panel2) 72%)}
+.work-visual.work-logo img{width:74%;height:auto;object-fit:contain}
+.work-visual.work-logo img.logo-tall{width:44%}
+.lang-grid .mag-visual img{object-position:50% 50%}
+.work-visual.work-type{display:grid;place-content:center;justify-items:center;gap:8px;padding:10px;text-align:center;background:linear-gradient(160deg,#1F2C3D 0%,#121821 70%)}
+.work-type strong{font-size:clamp(20px,2.3vw,30px);line-height:1.1;font-weight:800;letter-spacing:.06em;color:var(--ink)}
+.work-type span{font-size:10.5px;line-height:1.5;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2);text-wrap:balance}
+.work-visual.work-logo img{width:auto;height:auto;max-width:66%;max-height:30%}
+.work-visual.work-logo img.logo-tall{width:auto;max-width:50%;max-height:42%}
+/* 2026-10-28 review fixes */
+.nw{white-space:nowrap}
+.upcoming-more-tile{border:1px solid var(--line)}
+.work-type.is-long strong{font-size:clamp(12px,1.35vw,19px);letter-spacing:.04em}
+.work-type span{text-transform:none;letter-spacing:.04em}
+.work-note{margin-top:28px}
+.work-flow{display:flex;flex-direction:column;gap:12px;padding:20px;background:var(--soft);border-color:rgba(74,149,255,.35)}
+.flow-steps{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.flow-steps li{display:flex;align-items:center;gap:10px;font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:600}
+.flow-steps li span{flex:0 0 24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:800}
+@media(min-width:640px){.work-flow{grid-column:1/-1}}
+@media(min-width:1024px){
+  .work-flow{grid-column:span 3}
+  .flow-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lang-grid{grid-auto-rows:auto}
+  .lang-grid .mag-card{flex-direction:row;align-items:center}
+  .lang-grid .mag-visual{flex:0 0 112px;width:112px;margin:16px 0 16px 16px;border-radius:12px}
+  .lang-grid .mag-body{padding:16px 18px;gap:6px}
+  .lang-grid .mag-body h3{font-size:19px}
+}
+@media(min-width:640px) and (max-width:1023px){.lang-grid .mag-card{flex-direction:row;align-items:center}.lang-grid .mag-visual{flex:0 0 96px;width:96px;margin:14px 0 14px 14px;border-radius:12px}.lang-grid .mag-body{padding:14px 16px;gap:6px}.lang-grid .mag-body h3{font-size:17px}.lang-grid{grid-auto-rows:auto}}
+.work-visual.work-logo img.logo-tall{max-height:46%}
+.work-visual.work-logo img[src*="hanwha"]{max-height:34%}
+@media(min-width:1024px){.work-flow{justify-content:center;padding:24px 28px}}
+.work-visual.work-logo img[src*="hyundai"]{max-width:80%}

@@ -127,3 +127,17 @@
 .work-visual.work-logo img[src*="hanwha"]{max-height:34%}
 @media(min-width:1024px){.work-flow{justify-content:center;padding:24px 28px}}
 .work-visual.work-logo img[src*="hyundai"]{max-width:80%}
+/* 2026-10-28 round 2: O2O card with an image */
+.work-card.work-flow{flex-direction:row;align-items:center;gap:0;padding:0}
+.work-flow .work-body{display:flex;flex-direction:column;gap:10px}
+.work-flow .flow-steps li{font-size:13.5px}
+@media(min-width:1024px){
+  .work-card.work-flow{flex-direction:row;align-items:stretch;padding:0}
+  .work-flow .work-visual{flex:0 0 calc((100% - 32px) / 3);width:auto;margin:0;border-radius:0}
+  .work-flow .work-body{justify-content:center;padding:24px 28px;gap:14px}
+  .work-flow .flow-steps li{font-size:14.5px}
+}
+@media(min-width:1024px){
+  .work-card.work-flow{align-self:start;align-items:center}
+  .work-flow .work-visual{aspect-ratio:4/5;align-self:flex-start}
+}

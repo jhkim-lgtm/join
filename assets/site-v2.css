@@ -164,3 +164,16 @@
 .coffee-btn{align-self:flex-start}
 @media(min-width:768px){.coffee-chat{flex-direction:row;align-items:center;justify-content:space-between;gap:28px;padding:28px 32px}.coffee-btn{align-self:center;flex:none}}
 @media(min-width:1024px){.work-badge.tall img{height:24px}.work-badge{padding:6px 9px}}
+/* 2026-10-28 round 4: brand logo in its own bar above the thumbnail (no overlay on cover text) */
+.work-card.has-logo{display:grid;grid-template-columns:118px minmax(0,1fr);grid-template-rows:auto 1fr;align-items:center}
+.work-logo-bar{grid-column:1/-1;display:flex;align-items:center;justify-content:flex-start;gap:8px;height:46px;padding:0 16px;background:#0E131A;border-bottom:1px solid var(--line)}
+.work-logo-bar img{display:block;width:auto;height:auto;max-height:18px;max-width:120px}
+.work-logo-bar.tall img{max-height:30px}
+.work-card.has-logo .work-visual{margin:14px 0 14px 14px}
+@media(min-width:1024px){
+  .work-card.has-logo{grid-template-columns:1fr;grid-template-rows:auto auto 1fr;align-items:stretch}
+  .work-logo-bar{justify-content:center;height:56px;padding:0 12px}
+  .work-logo-bar img{max-height:22px;max-width:130px}
+  .work-logo-bar.tall img{max-height:36px}
+  .work-card.has-logo .work-visual{margin:0}
+}
